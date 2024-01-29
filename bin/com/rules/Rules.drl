@@ -1,0 +1,339 @@
+package com.rules
+
+//list any import classes here.
+import com.javainuse.model.Tekstil;
+
+
+//declare any global variables here
+
+
+
+
+rule "1"
+	salience 30
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "osrednje", prilika == "svakodnevna", OTvlaga == "ne", OTtrenje == "da", firma == "TEXTIL doo", ugovor == "da", cena >= 800);
+    then
+        t.setPreporuka("Eko koža");
+        update(t);
+
+end
+
+rule "2"
+    salience 29
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "toplo", prilika == "svakodnevna", OTvlaga == "ne", OTtrenje == "ne", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 1100);
+    then
+        t.setPreporuka("Čoja");
+        update(t);
+
+end
+
+rule "3"
+    salience 28
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "hladno", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "TEXTIL doo", ugovor == "da", cena >= 800);
+    then
+        t.setPreporuka("Lan");
+        update(t);
+
+end
+
+rule "4"
+    salience 27
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "osrednje", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "TEXTIL doo", ugovor == "da", cena >= 850);
+    then
+        t.setPreporuka("Somot");
+        update(t);
+
+end
+
+rule "5"
+    salience 26
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "osrednje", prilika == "svečana", OTvlaga == "ne", OTtrenje == "ne", firma == "TEXTIL doo", ugovor == "da", cena >= 1100);
+    then
+        t.setPreporuka("Čoja");
+        update(t);
+
+end
+
+rule "6"
+    salience 25
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "đžemper", vreme == "osrednje", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "ne", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "7"
+    salience 24
+	no-loop true
+    when
+        t:Tekstil(garderoba == "đžemper", vreme == "hladno", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 1800);
+    then
+        t.setPreporuka("Vuna");
+        update(t);
+
+end
+
+rule "8"
+    salience 23
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "đžemper", vreme == "osrednje" || vreme == "hladno", prilika == "svečana", OTvlaga == "da", OTtrenje == "ne", firma == "D&B TEXTIL doo", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "9"
+    salience 22
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "majica", vreme == "osrednje" || vreme == "hladno", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "ne", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "10"
+    salience 21
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "majica", vreme == "osrednje" || vreme == "hladno", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "ne", firma == "Gutto doo", ugovor == "ne", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "11"
+    salience 20
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "pantalone", vreme == "toplo", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "TEXTIL doo", ugovor == "da" cena >= 900);
+    then
+        t.setPreporuka("Teksas");
+        update(t);
+
+end
+
+rule "12"
+    salience 19
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "pantalone", vreme == "osrednje", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 900);
+    then
+        t.setPreporuka("Teksas");
+        update(t);
+
+end
+
+rule "13"
+    salience 18
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "pantalone", vreme == "hladno", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 900);
+    then
+        t.setPreporuka("Teksas");
+        update(t);
+
+end
+
+rule "14"
+    salience 17
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "pantalone", vreme == "osrednje", prilika == "svečana", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", cena >= 800);
+    then
+       t.setPreporuka("Lan");
+       update(t);
+
+end
+
+rule "15"
+    salience 16
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "pantalone", vreme == "toplo", prilika == "svečana", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 800);
+    then
+        t.setPreporuka("Lan");
+        update(t);
+
+end
+
+rule "16"
+    salience 15
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "majica", vreme == "hladno", prilika == "svečana", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 850);
+    then
+        t.setPreporuka("Saten");
+        update(t);
+
+end
+
+rule "17"
+    salience 14
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "piđžama", vreme == "osrednje" || vreme == "hladno" , prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "ne", firma == "Gutto doo", ugovor == "ne", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "18"
+    salience 13
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "pantalone", vreme =="osrednje" || vreme == "hladno" , prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "TEXTIL doo", ugovor == "da", cena >= 850);
+    then
+        t.setPreporuka("Somot");
+        update(t);
+
+end
+
+rule "19"
+    salience 12
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna",vreme == "hladno", prilika == "svečana", OTvlaga == "da", OTtrenje == "da", firma == "TEXTIL doo", cena >= 850);
+    then
+        t.setPreporuka("Somot");
+        update(t);
+
+end
+
+rule "20"
+    salience 11
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "osrednje", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "TEXTIL doo", ugovor == "da", cena >= 900);
+    then
+        t.setPreporuka("Teksas");
+        update(t);
+
+end
+
+rule "21"
+    salience 10
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "jakna", vreme == "toplo", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "D&B TEXTIL doo", ugovor == "ne", cena >= 900);
+    then
+        t.setPreporuka("Teksas");
+        update(t);
+
+end
+
+rule "22"
+    salience 9
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "piđžama", vreme == "osrednje" || vreme == "hladno" , prilika == "svakodnevna", OTvlaga == "ne", OTtrenje == "ne", firma == "Gutto doo", ugovor == "ne", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "23"
+    salience 8
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "veš", vreme == "osrednje" || vreme == "hladno" , prilika == "svakodnevna", OTvlaga == "da", firma == "Gutto doo", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "24"
+    salience 7
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "veš", vreme == "toplo" , prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "ne", firma == "Gutto doo", ugovor == "ne", cena >= 500);
+    then
+        t.setPreporuka("Til");
+        update(t);
+
+end
+
+rule "25"
+    salience 6
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "piđžama", vreme == "toplo" , prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "ne", firma == "Gutto doo", ugovor == "ne", cena >= 2400);
+    then
+        t.setPreporuka("Svila");
+        update(t);
+
+end
+
+rule "26"
+    salience 5
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "haljina", vreme == "osrednje", prilika == "svečana", OTvlaga == "da", OTtrenje == "da", firma == "TEKSTIL doo", cena >= 850);
+    then
+        t.setPreporuka("Saten");
+        update(t);
+
+end
+
+rule "27"
+    salience 4
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "haljina", vreme == "hladno", prilika == "svakodnevna", OTvlaga == "da", OTtrenje == "da", firma == "TEKSTIL doo", ugovor == "da", cena >= 900);
+    then
+        t.setPreporuka("Teksas");
+        update(t);
+
+end
+
+rule "28"
+    salience 3
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "haljina", vreme == "toplo", prilika == "svečana", OTvlaga == "da", OTtrenje == "ne", firma == "TEKSTIL doo", ugovor == "da", cena >= 2400);
+    then
+        t.setPreporuka("Svila");
+        update(t);
+
+end
+
+rule "29"
+    salience 2
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "haljina", vreme == "osrednje", prilika == "svakodnevna", OTvlaga == "da", firma == "TEKSTIL doo", ugovor == "da", cena >= 700);
+    then
+        t.setPreporuka("Pamuk");
+        update(t);
+
+end
+
+rule "30"
+    salience 1
+	lock-on-active true
+    when
+        t:Tekstil(garderoba == "haljina", vreme == "hladno", prilika == "svečana", OTvlaga == "da", OTtrenje == "ne", firma == "TEKSTIL doo", cena >= 850);
+    then
+        t.setPreporuka("Saten");
+
+end
